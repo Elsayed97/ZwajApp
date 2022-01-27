@@ -39,8 +39,7 @@ namespace ZwajApp.API.Controllers
                 }
                 var userToCreate = new User()
                 {
-                    UserName = userVM.userName,
-                    Email = userVM.Email
+                    UserName = userVM.userName
                 };
                 var CreatedUser = await _repo.Register(userToCreate, userVM.password);
                 return StatusCode(StatusCodes.Status201Created);
@@ -57,9 +56,8 @@ namespace ZwajApp.API.Controllers
             var userFromRepo = await _repo.Login(userVM.userName.ToLower(),userVM.password);
             if(userFromRepo == null) return Unauthorized();
             var claims = new [] {
-                new Claim(ClaimTypes.NameIdentifier , userFromRepo.Id),
+                new Claim(ClaimTypes.NameIdentifier , userFromRepo.Id.ToString()),
                 new Claim(ClaimTypes.Name , userFromRepo.UserName ),
-                new Claim(ClaimTypes.Email , userFromRepo.Email)
             };
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config.GetSection("AppSetteings:Token").Value));
             var credentials = new SigningCredentials(key,SecurityAlgorithms.HmacSha512);
