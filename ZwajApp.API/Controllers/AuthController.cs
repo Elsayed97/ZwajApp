@@ -27,7 +27,7 @@ namespace ZwajApp.API.Controllers
         }
 
         [HttpPost("Register")]
-        public async Task<IActionResult> Register(UserRegisterViewModel userVM)
+        public async Task<IActionResult> Register(UserRegisterVM userVM)
         {
 
             if (ModelState.IsValid)
@@ -51,7 +51,7 @@ namespace ZwajApp.API.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login(UserLoginViewModel userVM){
+        public async Task<IActionResult> Login(UserLoginVMl userVM){
 
             var userFromRepo = await _repo.Login(userVM.userName.ToLower(),userVM.password);
             if(userFromRepo == null) return Unauthorized();

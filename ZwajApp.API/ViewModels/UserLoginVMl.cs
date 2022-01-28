@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 namespace ZwajApp.API.ViewModels
 {
-    public class UserLoginViewModel
+    public class UserLoginVMl
     {
         [Required(ErrorMessage ="اسم المستخدم مطلوب")]
         [StringLength(15,MinimumLength =5,ErrorMessage ="يجب ان لا يزيد اسم المستخدم عن 15 حرف ولا تقل عن 5 حروف")]

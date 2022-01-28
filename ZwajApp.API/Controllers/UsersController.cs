@@ -34,7 +34,7 @@ namespace ZwajApp.Api.Controllers
             return Ok(users);
         }
 
-        [HttpGet("id")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetUser(int id)
         {
             var userToReturn = await _repo.GetUser(id);
