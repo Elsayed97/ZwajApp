@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ZwajApp.Api.ViewModels;
 using ZwajApp.API.Models;
+using ZwajApp.API.ViewModels;
 
 namespace ZwajApp.Api.Helpers
 {
@@ -19,6 +20,7 @@ namespace ZwajApp.Api.Helpers
                 .ForMember(dest => dest.PhotoUrl , opt => { opt.MapFrom(u => u.Photos.FirstOrDefault(p => p.IsMain).Url); })
                 .ForMember(dest => dest.Age , opt => { opt.ResolveUsing(u => u.DateOfBirth.CalculateAge()); });
             CreateMap<Photo, PhotoForDetailsVM>();
+            CreateMap<UserForUpdateVM,User>();
         }
     }
 }

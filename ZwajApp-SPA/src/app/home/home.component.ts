@@ -1,5 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+import { AuthService } from "../_services/auth.service";
 
 @Component({
   selector: "app-home",
@@ -9,26 +11,28 @@ import { Component, OnInit } from "@angular/core";
 export class HomeComponent implements OnInit {
   registerMode: boolean = false;
   values: any;
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,private authService:AuthService,private router:Router) {}
 
   ngOnInit() {
-    this.getValues();
+    if(this.authService.loggedIn){
+       this.router.navigate(['/members']);
+    }
   }
 
   registerToggle() {
     this.registerMode = true;
   }
 
-  getValues() {
-    this.http.get("http://localhost:5000/api/values").subscribe(
-      (response) => {
-        this.values = response;
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-  }
+  // getValues() {
+  //   this.http.get("http://localhost:5000/api/values").subscribe(
+  //     (response) => {
+  //       this.values = response;
+  //     },
+  //     (error) => {
+  //       console.log(error);
+  //     }
+  //   );
+  // }
 
   cancelRegister(mode:boolean){
     this.registerMode = mode;

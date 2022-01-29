@@ -25,7 +25,7 @@
       {{authService.decodedToken.unique_name | titlecase}}
     </a> 
     <div *dropdownMenu class="dropdown-menu mt-3" >
-      <a class="dropdown-item"><i class="fa fa-user-o" aria-hidden="true"></i>
+      <a class="dropdown-item" [routerLink]="['/member/edit']"  ><i class="fa fa-user-o" aria-hidden="true"></i>
         ملفى الشخصى</a> 
       <div class="dropdown-divider"></div>
       <a class="dropdown-item" (click)="loggedOut()"><i class="fa fa-sign-out" aria-hidden="true"></i>

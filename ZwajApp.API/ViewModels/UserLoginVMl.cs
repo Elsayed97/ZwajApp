@@ -4,7 +4,7 @@ namespace ZwajApp.API.ViewModels
     public class UserLoginVMl
     {
         [Required(ErrorMessage ="اسم المستخدم مطلوب")]
-        [StringLength(15,MinimumLength =5,ErrorMessage ="يجب ان لا يزيد اسم المستخدم عن 15 حرف ولا تقل عن 5 حروف")]
+        [StringLength(15,MinimumLength =3,ErrorMessage ="يجب ان لا يزيد اسم المستخدم عن 15 حرف ولا تقل عن 3 حروف")]
         public string userName { get; set; }
 
         [Required(ErrorMessage ="كلمة المرور مطلوبة")]
